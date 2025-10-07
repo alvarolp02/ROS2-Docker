@@ -3,10 +3,6 @@ FROM osrf/ros:noetic-desktop-full
 # avoid config interfaces
 ARG DEBIAN_FRONTEND=noninteractive
 
-# make sure that we have a valid .Xauthority file for X11 forwarding
-# This avoids startup issues and race conditions when starting the container
-RUN rm -rf /root/.Xauthority && touch /root/.Xauthority && chown root:root /root/.Xauthority
-
 # initial update and upgrade
 RUN apt-get update && apt-get upgrade -y
 
