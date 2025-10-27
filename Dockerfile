@@ -1,4 +1,4 @@
-FROM osrf/ros:noetic-desktop-full
+FROM osrf/ros:humble-desktop-full
 
 # avoid config interfaces
 ARG DEBIAN_FRONTEND=noninteractive
@@ -93,10 +93,10 @@ RUN make install
 RUN mkdir -p /tmp/rosparam_handler_ws/src
 COPY dependencies/rosparam_handler /tmp/rosparam_handler_ws/src
 WORKDIR /tmp/rosparam_handler_ws
-RUN . /opt/ros/noetic/setup.sh \ 
-    && catkin_make -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic/
+RUN . /opt/ros/humble/setup.sh \ 
+    && catkin_make -DCMAKE_INSTALL_PREFIX=/opt/ros/humble/
 WORKDIR /tmp/rosparam_handler_ws/build
-RUN . /opt/ros/noetic/setup.sh \ 
+RUN . /opt/ros/humble/setup.sh \ 
     && make install
 
 #--------------------------------------------------
@@ -149,8 +149,8 @@ RUN apt-get update && apt-get install -y \
     mrpt-apps
 
 # rviz plugin
-RUN apt-get update && apt-get install -y \
-    ros-noetic-jsk-rviz-plugins
+# RUN apt-get update && apt-get install -y \
+#     ros-noetic-jsk-rviz-plugins
 
 #--------------------------------------------------
 # trajectory dependencies
@@ -165,9 +165,9 @@ RUN pip install scikit-learn
 #--------------------------------------------------
 RUN apt-get update && apt-get install --install-recommends -y \
     htop \
-    ros-noetic-rqt-multiplot \
-    ros-noetic-plotjuggler-ros \
-    ros-noetic-rosmon
+    # ros-noetic-rqt-multiplot \
+    # ros-noetic-plotjuggler-ros \
+    # ros-noetic-rosmon
 
 #--------------------------------------------------
 # debugging tools
@@ -183,7 +183,7 @@ COPY .bash_aliases /root/.bash_aliases
 COPY bagger /usr/local/bin
 
 #remove /opt/ros/noetic/include/fmt because we're using a different version of fmt than ROS
-RUN rm -rf /opt/ros/noetic/include/fmt 
+# RUN rm -rf /opt/ros/noetic/include/fmt 
 
 # set working directory and shell
 WORKDIR /

@@ -1,7 +1,7 @@
 # Custom variables
 export MOPED_REPO_NAME="kit22d"
 export MOPED_REPO_PATH="/root/kit22d/moped_ws"
-export DOCKER_CONTAINER_NAME="kit22d_devcontainer-ros-docker-1"
+export DOCKER_CONTAINER_NAME="kit22d_devcontainer-ros2-docker-1"
 export CAR_PC_IP="192.168.25.19"
 export SNIPPETS_DIR="$HOME/kit22d/snippets"
 

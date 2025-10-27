@@ -88,7 +88,7 @@ declare -a OUT_SUPERVISOR=(
     "/supervisor/preload_map"
 )
 
-COMMAND="rosbag play "
+COMMAND="ros2 bag play "
 
 for argument in "$@"
 do
